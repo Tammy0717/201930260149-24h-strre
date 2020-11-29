@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cc.shop.pojo.ShopCartItem" table="shopcartitem">
+		<id name="cartitemid">
+			<generator class="native"/>
+		</id>
+		
+		<property name="uid"/>
+		<property name="pid"/>
+		<property name="pcount"/>
+		<property name="price"/>
+		<property name="image"/>
+		<property name="ptotal"/>
+		<property name="pname"/>
+		<!-- <many-to-one name="product" lazy="false" class="com.cc.shop.pojo.Product" column="pid"></many-to-one>
+		
+		<many-to-one name="order" class="com.cc.shop.pojo.Order" column="oid"/> -->
+	</class>
+</hibernate-mapping>

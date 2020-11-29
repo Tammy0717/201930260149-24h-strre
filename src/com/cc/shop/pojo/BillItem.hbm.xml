@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cc.shop.pojo.BillItem" table="billitem">
+		<id name="billid">
+			<generator class="native"/>
+		</id>
+		
+		<!-- <property name="pid"/> -->
+		<property name="count"/>
+		<property name="ptotal"/>
+		
+		
+		<!-- 订单与用户关联配置 -->
+		<many-to-one name="product" lazy="false" class="com.cc.shop.pojo.Product" column="pid" unique="true"/>
+	
+	</class>
+</hibernate-mapping>

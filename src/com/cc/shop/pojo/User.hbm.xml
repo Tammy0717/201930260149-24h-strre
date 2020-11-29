@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+<!-- 哪个实体类和数据库中的哪个表相映射 -->
+	<class name="com.cc.shop.pojo.User" table="user">
+	<!-- id标签是主键，name的值指的是user类中uid属性，column的值对应user表中uid字段，属性native是由数据库判断自行判断采用哪种自动生成方式 -->
+		<id name="uid" column="uid">
+			<generator class="native"/>
+		</id>
+		<!-- name的值是user类中的属性usename column的值是数据库user表中字段username ，若类中的属性名称和数据库中字段名称相同，可省略column配置-->
+		<property name="username" column="username"/>
+		<property name="password"/>
+		<property name="name"/>
+		<property name="email"/>
+		<property name="phone"/>
+		<property name="addr"/>
+		<!-- order订单表中的外键uid参考user用户表中的主键uid,因此可以根据用户的uid在订单表中查到该用户的所有订单信息 -->
+		<!-- name的值orders 是user实体类中的属性order对象的集合 ，lazy配置false，标识不延迟加载，即当加载查询用户信息时，会把该用户的订单信息加载出来-->
+		<set name="orders" lazy="false">
+			<key column="uid"/>
+			<!-- 一个用户可以有多个订单，用户和订单是一对多的关系，class是配置对应的实体类 -->
+			<one-to-many class="com.cc.shop.pojo.Order"/>
+		</set>
+	</class>
+</hibernate-mapping>
